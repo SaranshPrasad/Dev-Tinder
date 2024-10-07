@@ -29,13 +29,9 @@ app.use("/", profileRouter);
 app.use("/", requestRouter); 
 
 // Error handling for better user experience and security
-app.use("/", (err, req, res, next) => {
-  if (err) {
-    res.send("Something went wrong 👻");
-  } else {
-    next();
-  }
-});
+
 
 // Server is Up !
-app.listen(PORT, (req, res) => {});
+app.listen(PORT, (req, res) => {
+  console.log(`Server is starting at ${PORT}!`);
+});

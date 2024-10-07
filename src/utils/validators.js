@@ -17,6 +17,16 @@ const validateLoginData = (req) => {
         throw new Error("Please provide Email and Password !");
     }
 }
+
+const validateUpdateData = (req) => {
+    const allowedFieldsUpdate = ["about", "photoUrl", "age", "skills", "firstName", "lastName"];
+    const isAllowedUpdates = Object.keys(req.body).every((k) =>
+        allowedFieldsUpdate.includes(k)
+      );
+      if (!isAllowedUpdates) {
+        throw new Error("Update not allowed !");
+      }
+}
 module.exports = {
-    validateSignUpData, validateLoginData
+    validateSignUpData, validateLoginData, validateUpdateData
 }

@@ -4,6 +4,7 @@ const {validateSignUpData, validateLoginData} = require("../utils/validators");
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const cookieParser = require('cookie-parser');
+const { userAuth } = require("../middlewares/auth");
 
 
 authRouter.use(express.json());
@@ -47,5 +48,11 @@ authRouter.post("/login", async (req, res) => {
     
   });
 
+  authRouter.post("/logout", userAuth, async(req, res) =>{
+    res.cookie("token", null,{
+      expires: new Date(Date.now()),
+    });
+    res.send("Logout Successfully !");
+  })
 
 module.exports = authRouter;
