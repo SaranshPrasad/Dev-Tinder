@@ -13,7 +13,7 @@ profileRouter.get("/profile", userAuth, async (req, res) => {
   }
 });
 
-profileRouter.delete("/profile/view", userAuth, async (req, res) => {
+profileRouter.delete("/profile/delete", userAuth, async (req, res) => {
   const userId = req.user._id;
   try {
     const user = await User.findByIdAndDelete(userId);

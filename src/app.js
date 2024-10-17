@@ -13,6 +13,7 @@ app.use(express.json()); // Middleware for body datas
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/requests");
+const userRouter = require("./routes/user");
 // Database Connection
 connectDB()
   .then(() => {
@@ -27,6 +28,7 @@ connectDB()
 app.use("/", authRouter);
 app.use("/", profileRouter); 
 app.use("/", requestRouter); 
+app.use("/", userRouter);
 
 // Error handling for better user experience and security
 
